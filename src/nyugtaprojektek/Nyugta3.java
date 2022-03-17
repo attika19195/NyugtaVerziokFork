@@ -1,6 +1,12 @@
 package nyugtaprojektek;
 public class Nyugta3 {
-
+    static int tetel1 = 350, tetel2 = 90, tetel3 = 1320;
+    static final String HUF = "Ft";
+    static int osszesen = tetel1 + tetel2 + tetel3;
+    static int szervizDijMertek = 10;
+    static int szervizDij = osszesen / szervizDijMertek;
+    
+    
     public static void main(String[] args) {
         csillagok();
         
@@ -8,23 +14,19 @@ public class Nyugta3 {
         
         csillagok();
         
-        final String HUF = "Ft";
-        
-        int tetel1 = 350, tetel2 = 90, tetel3 = 1320;
-        
-        tetelekKiiratasa(tetel1, tetel2,tetel3,HUF);
+        tetelekKiiratasa();
 
         duplaszaggatott();
         
-        int osszesen = osszesen(tetel1, tetel2,tetel3,HUF);
+        osszesen();
         
         szaggatott();
         
-        int szervizDij = szervizDij(osszesen, HUF);
+        szervizDij();
         
         duplaszaggatott();
         
-        fizetendo(osszesen, szervizDij, HUF);
+        fizetendo();
         
         szaggatott();
         
@@ -52,7 +54,7 @@ public class Nyugta3 {
         System.out.println(szaggatottVonal);
     }
 
-    private static void tetelekKiiratasa(int tetel1, int tetel2, int tetel3, String HUF) {
+    private static void tetelekKiiratasa() {
         System.out.printf("%10s: %5d %s\n", "Tétel 1", tetel1, HUF);
         System.out.printf("%10s: %5d %s\n", "Tétel 2", tetel2, HUF);
         System.out.printf("%10s: %5d %s\n", "Tétel 3", tetel3, HUF);
@@ -70,21 +72,17 @@ public class Nyugta3 {
         System.out.println("   Név");
     }
 
-    private static int szervizDij(int osszesen, String HUF) {
-        int szervizDijMertek = 10;
-        int szervizDij = osszesen / szervizDijMertek;
+    private static void szervizDij() {
         System.out.printf("%10s: %5d %s\n", "Szervízdíj", szervizDij, HUF);
         System.out.printf("(%d%%)\n", szervizDijMertek);
-        return szervizDij;
     }
 
-    private static int osszesen(int tetel1, int tetel2, int tetel3, String HUF) {
+    private static void osszesen() {
         int osszesen = tetel1 + tetel2 + tetel3;
         System.out.printf("%10s: %5d %s\n", "Összesen", osszesen, HUF);
-        return osszesen;
     }
 
-    private static void fizetendo(int osszesen, int szervizDij, String HUF) {
+    private static void fizetendo() {
         int fizetendo = osszesen + szervizDij;
         System.out.printf("%10s:  %d %s\n", "Fizetendő", fizetendo, HUF);
         double euro = fizetendo / 350.0;
